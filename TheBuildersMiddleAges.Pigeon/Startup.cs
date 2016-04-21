@@ -1,3 +1,4 @@
+using Microsoft.AspNet.SignalR;
 using Microsoft.Owin.Cors;
 using Owin;
 
@@ -8,7 +9,14 @@ namespace TheBuildersMiddleAges.Pigeon
         public void Configuration(IAppBuilder app)
         {
             app.UseCors(CorsOptions.AllowAll);
-            app.MapSignalR();
+
+            var hubConfiguration = new HubConfiguration
+            {
+                EnableDetailedErrors = true,
+                EnableJSONP = true
+            };
+
+            app.MapSignalR(hubConfiguration);
         }
     }
 }
