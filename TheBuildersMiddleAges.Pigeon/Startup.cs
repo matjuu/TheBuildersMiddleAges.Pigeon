@@ -1,16 +1,13 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.Owin;
+using Microsoft.Owin.Cors;
 using Owin;
-
-[assembly: OwinStartup(typeof(TheBuildersMiddleAges.Pigeon.Startup))]
 
 namespace TheBuildersMiddleAges.Pigeon
 {
-    public class Startup
+    class Startup
     {
         public void Configuration(IAppBuilder app)
         {
+            app.UseCors(CorsOptions.AllowAll);
             app.MapSignalR();
         }
     }
